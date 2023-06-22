@@ -1,26 +1,11 @@
-      # Map Floodwater from Radar Imagery
+# Flood water mapping segmentation pipeline
 
 
 ```Tensorflow.keras``` Implementation
 
 ## Introduction
 
-The image segmentation model can be used to extract real-world objects from images, blur backgrounds, create self-driving automobiles and perform other image processing tasks. The goal of this research is to create a mask that shows floodwater in a given location based on Sentinal-1 (dual-polarization synthetic-aperture radar (SAR) system) images or features.
-
-## Dataset
-
-The dataset collected from the competition: [Map Floodwater from Radar Imagery](https://www.drivendata.org/competitions/81/detect-flood-water/page/386/) which is hosted by Microsoft AI for Earth. Can be collected from [here](https://map-floodwater-driven-data-competition.s3.amazonaws.com/floodwater-data/floodwater-data.zip). The dataset consists of Sentinel-1 images and masks, as well as a CSV file with metadata such as city and year. Sentinel-1 images and masks are acquired from various parts of the world between 2016 and 2020. In total the dataset consists of 542 chips (1084 images) and corresponding masks. Based on how radar microwave frequency transmits and receives, a single chip comprises two bands or images. Vertical transmit and receive are represented by the VV images. On the other hand, VH images stand for vertical transmit and horizontal receive. Each picture is saved as a GeoTIFF file with the dimension of 512 X 512. The mask consist of three categories:
-
-* Water: 1
-* NON-Water: 0
-* unlabeled: 255
-
-Some examples from dataset.
-
-![Alternate text](/readme/img_id_ayt01.png)
-![Alternate text](/readme/img_id_jja60.png)
-![Alternate text](/readme/img_id_kuo02.png)
-
+The image segmentation model can be used to extract real-world objects from images, blur backgrounds, create self-driving automobiles and perform other image processing tasks. This pipeline aims to train segmentation models in any segmentation task by modifying the dataset class based on the study.
 
 ## Models
 
@@ -33,7 +18,7 @@ In this repository we implement UNET, U2NET, UNET++, VNET, DNCNN, and MOD-UNET u
 | `vnet`      | V-net (modified for 2-d inputs) | [Milletari et al. (2016)](https://arxiv.org/abs/1606.04797) |
 | `unet++` | U-net++         | [Zhou et al. (2018)](https://link.springer.com/chapter/10.1007/978-3-030-00889-5_1) |
 | `u2net`     | U^2-Net         | [Qin et al. (2020)](https://arxiv.org/abs/2005.09007) |
-| `fapnet`     | FAPNET         | Proposed Work |
+| `fapnet`     | FAPNET         | [Islam et al. (2022)](https://www.mdpi.com/1424-8220/22/21/8245) |
 |  | [**keras_unet_collection**](https://github.com/yingkaisha/keras-unet-collection) |  |
 | `kuc_r2unet`   | R2U-Net         | [Alom et al. (2018)](https://arxiv.org/abs/1802.06955) |
 | `kuc_attunet`  | Attention U-net | [Oktay et al. (2018)](https://arxiv.org/abs/1804.03999) |
@@ -175,23 +160,5 @@ python train.py \
     --experiment phr \
 ```
 
-## Result
-
-We train models for all different experiments mention above. Some best and worst prediction result shown below.
-Best             |
-:-------------------------:
-![Alternate text](/readme/best.png)
-Worst           |
-![Alternate text](/readme/worst.png)
-
-## Overview of the .py files
-
-The following figures are the overview of the important .py files in this repo.
-
-![Alternate text](/readme/fullpipeline.png)
-
-![Alternate text](/readme/dataset.png)
-
-![Alternate text](/readme/utils.png)
-
-![Alternate text](/readme/visualization.png)
+## Notes
+I completely renovated this repository from its prior version while I was a machine learning engineer at Canada Syntax. The original repository is openly accessible [here](https://github.com/samiulengineer/flood_water_mapping_segmentation).
