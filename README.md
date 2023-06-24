@@ -29,7 +29,7 @@ In this repository, we implement UNET, U2NET, UNET++, VNET, DNCNN, and MOD-UNET 
 | `kuc_vnet`      | V-net (modified for 2-d inputs) | [Milletari et al. (2016)](https://arxiv.org/abs/1606.04797) |
 | `kuc_unetpp` | U-net++         | [Zhou et al. (2018)](https://link.springer.com/chapter/10.1007/978-3-030-00889-5_1) |
 | `kuc_u2net`     | U^2-Net         | [Qin et al. (2020)](https://arxiv.org/abs/2005.09007) |
-|  | [**segmentation-models**](https://github.com/yingkaisha/keras-unet-collection) |  |
+|  | [**segmentation-models**](https://github.com/qubvel/segmentation_models) |  |
 | `sm_unet`      | U-net           | [Ronneberger et al. (2015)](https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28) |
 | `sm_linknet`     | LINK-Net         | [Chaurasia et al. (2017)](https://arxiv.org/pdf/1707.03718.pdf) |
 | `sm_fpn`     | FPS-Net         | [Xiao et al. (2021)](https://arxiv.org/pdf/2103.00738.pdf) |
