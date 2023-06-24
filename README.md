@@ -5,11 +5,11 @@
 
 ## Introduction
 
-The image segmentation model can be used to extract real-world objects from images, blur backgrounds, create self-driving automobiles and perform other image processing tasks. This pipeline aims to train segmentation models in any segmentation task by modifying the dataset class based on the study.
+The image segmentation model can be used to extract real-world objects from images, blur backgrounds, create self-driving automobiles and perform other image-processing tasks. This pipeline aims to train segmentation models in any segmentation task by modifying the dataset class based on the study.
 
 ## Models
 
-In this repository we implement UNET, U2NET, UNET++, VNET, DNCNN, and MOD-UNET using `Keras-TensorFLow` framework. We also add `keras_unet_collection`(`kuc`) and `segmentation-models`(`sm`) library models which is also implemented using `Keras-TensorFLow`. The following models are available in this repository.
+In this repository, we implement UNET, U2NET, UNET++, VNET, DNCNN, and MOD-UNET using the `Keras-TensorFLow` framework. We also add `keras_unet_collection`(`kuc`) and `segmentation-models`(`sm`) library models which are also implemented using `Keras-TensorFLow`. The following models are available in this repository.
 
 | Model | Name | Reference |
 |:---------------|:----------------|:----------------|
@@ -37,37 +37,24 @@ In this repository we implement UNET, U2NET, UNET++, VNET, DNCNN, and MOD-UNET u
 
 ## Setup
 
-First clone the github repo in your local or server machine by following:
+First clone the GitHub repo in your local or server machine by following:
 ```
-git clone https://github.com/samiulengineer/flood_water_mapping_segmentation.git
+git clone https://github.com/MojammelHossain/flood_water_mapping_segmentation.git
 ```
 
-Create a new environment and install dependency from `requirement.txt` file. Before start training check the variable inside config.yaml i.e. `height`, `in_channels`. Keep the above mention dataset in the data folder that give you following structure:
-
-```
---data
-    --train_features
-        --image_id_vv.tif
-        --image_id_vh.tif
-            ..
-    --train_labels
-        --image_id.tif
-        --image_id.tif
-            ..
-    flood-training-metadata.csv
-```
+Create a new environment and install dependencies from the `requirement.txt` file. Before starting training check the variable inside config.yaml i.e. `height`, `in_channels`, `dataset_dir`, `root_dir` etc. **Remember to change `read_img()` and `transform_data()` as per your dataset.**
 
 ## Experiments
 
-After setup the required folders and package run one of the following experiment. There are four experiments based on combination of parameters passing through `argparse` and `config.yaml`. Combination of each experiments given below. 
+After setup the required folders and package run one of the following experiments. There are four experiments based on the combination of parameters passing through `argparse` and `config.yaml`. The combination of each experiment is given below. 
 
 When you run the following code based on different experiments, some new directories will be created;
-1. csv_logger (save all evaluation result in csv format)
+1. csv_logger (save all evaluation results in CSV format)
 2. logs (tensorboard logger)
 3. model (save model checkpoint)
 4. prediction (validation and test prediction png format)
 
-* **Comprehensive Full Resolution (CFR)**: This experiment utilize the dataset as it is.
+* **Comprehensive Full Resolution (CFR)**: This experiment utilizes the dataset as it is.
 
 ```
 python train.py --root_dir YOUR_ROOT_DIR \
@@ -82,7 +69,7 @@ python train.py --root_dir YOUR_ROOT_DIR \
     --weights False \
 ```
 
-* **Comprehensive Full Resolution with Class Balance (CFR-CB)**: We balance the dataset biasness towards non-water class in this experiment. 
+* **Comprehensive Full Resolution with Class Balance (CFR-CB)**: We balance the dataset biases in this experiment using passed class weight. 
 
 ```
 python train.py --root_dir YOUR_ROOT_DIR \
@@ -97,7 +84,7 @@ python train.py --root_dir YOUR_ROOT_DIR \
     --weights True \
 ```
 
-* **Patchify Half Resolution (PHR)**: In this experiment we take all the patch images for each chip.
+* **Patchify Half Resolution (PHR)**: In this experiment, we take all the patch images for each image.
 
 ```
 python train.py --root_dir YOUR_ROOT_DIR \
@@ -112,7 +99,7 @@ python train.py --root_dir YOUR_ROOT_DIR \
     --weights False \ 
 ```
 
-* **Patchify Half Resolution with Class Balance (PHR-CB)**: In this experiment we take a threshold value (19%) of water class and remove the patch images for each chip that are less than threshold value.
+* **Patchify Half Resolution with Class Balance (PHR-CB)**: In this experiment, we take a threshold value (XX%) of desired class and remove the patch images for each image that are less than the threshold value.
 
 ```
 python train.py --root_dir YOUR_ROOT_DIR \
@@ -132,7 +119,7 @@ python train.py --root_dir YOUR_ROOT_DIR \
 
 * **CFR and CFR-CB Experiment**
 
-Run following model for evaluating train model on test dataset.
+Run the following model for evaluating the trained model on the test dataset.
 
 ```
 python test.py \
